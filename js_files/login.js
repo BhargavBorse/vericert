@@ -37,3 +37,50 @@ firebase.auth().onAuthStateChanged(function (user) {
       ui.start('#firebaseui-auth-container', uiConfig);
   }
 });
+
+
+        n =  new Date();
+        y = n.getFullYear();
+        m = n.getMonth() + 1;
+        d = n.getDate();
+        
+        var time = new Date();
+        
+        var current_time = time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+        
+        document.getElementById('subBtn').onclick = function(){
+            alert('bhargav');
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var subject = document.getElementById('subject').value;
+            var message = document.getElementById('message').value;
+            // alert(message_for);
+            
+            if (name == "") {
+                alert("Name must be filled out");
+                return false;
+            }
+            else if(email == "")
+            {
+                alert("Email must be filled out");
+                return false;
+            }
+            else if(message == "")
+            {
+                alert("Message must be filled out");
+                return false;
+            }
+            
+            firebase.database().ref().child('contact').push({
+                id: 'Guest',
+                name: name + ' - Guest', 
+                email: email + ' - Guest',
+                subject : subject,
+                message: message,
+                feed_date: d + "/" + m + "/" + y,
+                feed_time: time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+            });
+            alert('Your query is sent to our representative.');
+            location.reload();
+            // end of storing data
+        };
