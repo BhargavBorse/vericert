@@ -80,15 +80,15 @@ function forgot_password(){
     var userEmail = document.getElementById("email_field").value;
     
     auth.sendPasswordResetEmail(userEmail).then(function() {
-      // Email sent.
-      window.alert("To reset password please check your email");
+        // Email sent.
+        window.alert("To reset password please check your email");
     }).catch(function(error) {
-      // An error happened.
-      window.alert("Please enter correct Email Id");
+        // An error happened.
+        window.alert("Please enter correct Email Id");
     });
     
-  }
-  
-  function logout(){
+}
+
+function logout(){
     firebase.auth().signOut();
-  }
+}

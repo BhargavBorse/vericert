@@ -43,3 +43,15 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 });
 
+function logout(){
+    firebase.auth().signOut();
+}
+
+var url_string = window.location.href;
+var url = new URL(url_string);
+var id = url.searchParams.get("id");
+
+function del_rec()
+{
+    alert('in');
+}   

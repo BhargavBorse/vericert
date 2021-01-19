@@ -61,3 +61,7 @@ firebase.database().ref().child('contact').on('child_added',function(feed_snapsh
     feed_date_cell.appendChild(feed_date_value_cell);
     feed_time_cell.appendChild(feed_time_value_cell);
 });
+
+function logout(){
+    firebase.auth().signOut();
+}
