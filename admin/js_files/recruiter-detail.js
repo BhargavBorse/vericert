@@ -24,12 +24,12 @@ firebase.auth().onAuthStateChanged(function(user) {
         // alert(id);
         firebase.database().ref().child('recruiter').child(id).on('value',function(feed_snapshot){
             var snap = feed_snapshot.val();
-            
             document.getElementById('name').value = snap.name;
             document.getElementById('email').value = snap.email;
             document.getElementById('phone_no').value = snap.phone_no;
             document.getElementById('address').value = snap.address;
             document.getElementById('gender').value = snap.gender;
+            document.getElementById('status').value = snap.login_status;
             document.getElementById('dob').value = snap.dob;
             document.getElementById('ins_name').value = snap.ins_name;
             document.getElementById('ins_add').value = snap.ins_add;
@@ -43,15 +43,21 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 });
 
-function logout(){
-    firebase.auth().signOut();
-}
-
 var url_string = window.location.href;
 var url = new URL(url_string);
 var id = url.searchParams.get("id");
-
-function del_rec()
+function inactive()
 {
-    alert('in');
-}   
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            firebase.database().ref().child('recruiter').child(id).update({
+                login_status: 'inactive'
+            });
+            alert('Account inactivated');
+        }
+    });
+}
+
+function logout(){
+    firebase.auth().signOut();
+}

@@ -144,35 +144,22 @@
             <section id="contact" class="content-section">
                 <div id="contact-content">
                     <div class="section-heading">
-                        <h1>Manage<br><em>Requests</em></h1>
-                        <p>All your requests sent by any organisation
+                        <h1>Request<br><em>Action</em></h1>
+                        <!-- <p>All your requests sent by any organisation
                             <br>or institute will be visible here. 
-                        </p>
-                        
-                    </div>
-                    <div class="table-responsive">          
-                        <table class="table table-hover" style="text-align:left !important;" id="feedbacktable">
-                            <thead>
-                                <tr style="background-color: black; color: white; padding: 10px;">
-                                    <th>Received from</th>
-                                    <th>Org/Company Name</th>
-                                    <th>Request Date</th> 
-                                    <th>Request Status</th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
+                        </p> -->
+                        <br><br><br>
+                        <h4>Please select your reaction to the request.</h4>
+                        <div class="row">
+                            <div class="col-md-4" style="padding: 8px;">
+                                <a type="button" class="btn" style="background-color: black; color: white; padding: 10px; width: 100%;" id="accept">Accept</a>    
+                            </div>
+                            <div class="col-md-4" style="padding: 8px;">
+                                <a type="button" class="btn" style="background-color: black; color: white; padding: 10px; width: 100%;" id="reject">Reject</a>    
+                            </div>
+                        </div>                    
                     </div>
                 </div>
-            </section>
-            <section class="footer">
-                <p>
-                    Designed and developed by <a href="http://www.enlighteninfosystems.com/">Enlighten Infosystem.</a>
-                </p>
             </section>
         </div>
         
@@ -250,6 +237,6 @@
             firebase.initializeApp(firebaseConfig);
         </script>
         <!-- <script src="js_files/main.js"></script> -->
-        <script src="js_files/request.js"></script>
+        <script src="js_files/blankAction.js"></script>
     </body>
     </html>

@@ -67,7 +67,7 @@ firebase.database().ref().child('recruiter').on('child_added',function(feed_snap
         dlink_more_details.appendChild(dlink_more_details_text);
         dlink_more_details.setAttribute('class',"btn btn-danger")
         // alink_more_details.setAttribute('class',"fa fa-info")
-        dlink_more_details.href = "official-detail.html?id="+id; 
+        dlink_more_details.href = "blank_recruiter.html?id="+id; 
 
         var blink_more_details = document.createElement("a");
         var blink_more_details_text = document.createTextNode('More Detail');

@@ -11,7 +11,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         {
             document.getElementById('userName').innerText=displayName;
         }
-        pullDets();
         // ...
     } else {
         // User is signed out.
@@ -22,6 +21,20 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
+
+        database.child(user.uid).child('user_details').on('value',function(user_details_first){
+            var user_first = user_details_first.val();
+
+            document.getElementById('name').value = user.displayName;
+            document.getElementById('email').value = user.email;
+            document.getElementById('phone_no').value = user_first.phone_no;
+            document.getElementById('address').value = user_first.address;
+            document.getElementById('dob').value = user_first.dob;
+            document.getElementById('gender').value = user_first.gender;
+            document.getElementById('qualification').value = user_first.qualification;
+            document.getElementById('institute').value = user_first.institute;
+            document.getElementById('enrollment').value = user_first.enrollment;
+        });
 
         document.getElementById('subBtn').onclick = function(){
             if (document.getElementById('detsForm')!=null)
@@ -34,6 +47,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 var gender = document.getElementById('gender').value;
                 var qualification = document.getElementById('qualification').value;
                 var institute = document.getElementById('institute').value;
+                var enrollment = document.getElementById('enrollment').value;
 
                 if (name == "") {
                     alert("Name must be filled out");
@@ -54,6 +68,10 @@ firebase.auth().onAuthStateChanged(function (user) {
                     alert("Phone number is in wrong format ");
                     phone_no.focus();
                     return false;
+                }
+                else if(enrollment == "")
+                {
+                    alert("Enrollment no should be filled out")
                 }
                 else if(address == "")
                 {
@@ -82,8 +100,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                     return false;
                 }
 
-                var database = firebase.database().ref('users');
-                database.child(user.uid).child('user_details').update({
+                firebase.database().ref().child('users').child(user.uid).child('user_details').update({
                     name: name,
                     email: email,
                     phone_no: phone_no,
@@ -91,10 +108,11 @@ firebase.auth().onAuthStateChanged(function (user) {
                     dob: dob,
                     gender: gender,
                     qualification: qualification,
-                    institute: institute
+                    institute: institute,
+                    enrollment: enrollment
                 });
                 alert('Details saved successfully');
-                window.location.replace('./main.html');
+                window.location = 'main.html';
             }
         }
     }
@@ -102,6 +120,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         // User is signed out.
         // ...
         alert('error');
-        window.location.replace('./index.html');
+        window.location.replace('index.html');
     }
 });

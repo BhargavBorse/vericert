@@ -21,6 +21,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             document.getElementById('gender').value = user_details.gender;
             document.getElementById('qualification').value = user_details.qualification;
             document.getElementById('institute').value = user_details.institute;
+            document.getElementById('enrollment').value = user_details.enrollment;
         });
 
         document.getElementById('updtBtn').onclick = function(){
@@ -34,6 +35,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 var gender = document.getElementById('gender').value;
                 var qualification = document.getElementById('qualification').value;
                 var institute = document.getElementById('institute').value;
+                var enrollment = document.getElementById('enrollment').value;
 
                 if (name == "") {
                     alert("Name must be filled out");
@@ -59,6 +61,10 @@ firebase.auth().onAuthStateChanged(function (user) {
                 {
                     alert("Address must be filled out");
                     return false;
+                }
+                else if(enrollment == "")
+                {
+                    alert("Enrollment no should be filled out")
                 }
                 else if(dob == "")
                 {
@@ -91,7 +97,8 @@ firebase.auth().onAuthStateChanged(function (user) {
                     dob: dob,
                     gender: gender,
                     qualification: qualification,
-                    institute: institute
+                    institute: institute,
+                    enrollment: enrollment
                 });
                 alert('Details updated.');
                 window.location.replace('./profile.html');

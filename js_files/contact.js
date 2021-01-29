@@ -7,9 +7,8 @@ firebase.auth().onAuthStateChanged(function (user) {
         uid = user.uid;
         if(displayName!=null)
         {
-            document.getElementById('userName').innerText=displayName;
+            // document.getElementById('userName').innerText=displayName;
         }
-        pullDets();
         // ...
     } else {
         // User is signed out.

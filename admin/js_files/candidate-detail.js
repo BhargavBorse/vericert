@@ -33,6 +33,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             document.getElementById('dob').value = snap.dob;
             document.getElementById('ins_name').value = snap.institute;
             document.getElementById('qualification').value = snap.qualification;
+            document.getElementById('enrollment').value = snap.enrollment;
         });
     } else {
         // No user is signed in.

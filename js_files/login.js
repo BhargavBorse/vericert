@@ -49,7 +49,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         var current_time = time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
         
         document.getElementById('subBtn').onclick = function(){
-            alert('bhargav');
+           
             var name = document.getElementById('name').value;
             var email = document.getElementById('email').value;
             var subject = document.getElementById('subject').value;
@@ -81,6 +81,6 @@ firebase.auth().onAuthStateChanged(function (user) {
                 feed_time: time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
             });
             alert('Your query is sent to our representative.');
-            location.reload();
+            // location.reload();
             // end of storing data
         };

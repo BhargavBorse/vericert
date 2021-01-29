@@ -67,7 +67,7 @@ firebase.database().ref().child('officials').on('child_added',function(feed_snap
         dlink_more_details.appendChild(dlink_more_details_text);
         dlink_more_details.setAttribute('class',"btn btn-danger")
         // alink_more_details.setAttribute('class',"fa fa-info")
-        dlink_more_details.href = "official-detail.html?id="+id; 
+        dlink_more_details.href = "blank_officials.html?id="+id; 
 
         var blink_more_details = document.createElement("a");
         var blink_more_details_text = document.createTextNode('More Detail');

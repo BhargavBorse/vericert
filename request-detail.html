@@ -21,8 +21,15 @@
     <link rel="stylesheet" href="css/style.css">
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-    
+
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    
+    <style>
+        .form-control{
+            background-color: white !important;
+            color: black !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -137,35 +144,94 @@
             </ul> -->
         </div>
         
-        
-        
-        
-        <div class="page-content">
+        <div class="page-content">    
             <section id="contact" class="content-section">
                 <div id="contact-content">
                     <div class="section-heading">
-                        <h1>Manage<br><em>Requests</em></h1>
-                        <p>All your requests sent by any organisation
-                            <br>or institute will be visible here. 
-                        </p>
+                        <h1>
+                            Request<em> Detail</em>
+                        </h1>
+                        <!-- <p>For using services please fill the form.</p> -->
                         
                     </div>
-                    <div class="table-responsive">          
-                        <table class="table table-hover" style="text-align:left !important;" id="feedbacktable">
-                            <thead>
-                                <tr style="background-color: black; color: white; padding: 10px;">
-                                    <th>Received from</th>
-                                    <th>Org/Company Name</th>
-                                    <th>Request Date</th> 
-                                    <th>Request Status</th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    <div class="section-content">
+                        <form id="detsForm" action="#" method="post">
+                            <div class="row" style="text-align: left !important;">
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <label for="name">Recruiter Name</label>
+                                        <input name="name" type="text" class="form-control" id="name" placeholder="Recruiter Name" required="" readonly>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <label for="email">Designation</label>
+                                        <input name="email" type="text" class="form-control" id="recDesignation" placeholder="Designation" required="" readonly>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <fieldset>
+                                            <label for="qualification">Recruiter Email</label>
+                                            <input name="email" type="text" class="form-control" id="requestBy" placeholder="Recruiter Email" required="" readonly>
+                                        </fieldset>
+                                    </fieldset>
+                                </div>
                                 
-                            </tbody>
-                        </table>
+                                <div class="col-md-6">
+                                    <fieldset>
+                                        <label for="title">Org/Company Name</label>
+                                        <input name="title" type="text" class="form-control" id="insName" placeholder="Company Name" required="" readonly>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-6">
+                                    <fieldset>
+                                        <label for="description">Company Address</label>
+                                        <input name="description" type="text" class="form-control" id="insAddress" placeholder="Company Address" required="" readonly>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <label for="dob">Request Date</label>
+                                        <input name="issuedby" type="text" class="form-control" id="requestDate" placeholder="Request Date" required="" readonly>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <label for="dob">Request Status</label>
+                                        <input name="issueddate" type="text" class="form-control" id="requestStatus" placeholder="Request Status" required="" readonly>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <label for="dob">Expiry Date</label>
+                                        <input name="issueddate" type="text" class="form-control" id="expiryDate" placeholder="Request Status" required="" readonly>
+                                    </fieldset>
+                                </div>
+                                <!-- <div class="col-md-5 certImage">
+                                    <label for="certImage">Certificate</label>
+                                </div> -->
+                                <!-- <div class="col-md-12">
+                                    <fieldset>
+                                        <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+                                    </fieldset>
+                                </div> -->
+                                <div class="col-md-12">
+                                    <!-- <button type="button" style="background-color: black; padding: 10px; color: white;" class="btn">Accept Request</button>
+                                    <br><br>
+                                    <button type="button" style="background-color: black; padding: 10px; color: white;" class="btn">Reject Request</button> -->
+                                </div>
+                                <div class="col-md-12">
+                                    <fieldset>
+                                        <!-- <button type="button" id="accept">Accept</button> -->
+                                        <a id="accept" class="btn" style="background-color: black; padding: 10px; color: white;">Accept Request</a>
+                                        <a id="reject" class="btn" style="background-color: black; padding: 10px; color: white;">Reject Request</a>
+                                        <br><br>
+                                        <a href="request.html" style="background-color: black; padding: 10px; color: white;" class="btn">Back to Request's List</a>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </section>
@@ -250,6 +316,6 @@
             firebase.initializeApp(firebaseConfig);
         </script>
         <!-- <script src="js_files/main.js"></script> -->
-        <script src="js_files/request.js"></script>
+        <script src="js_files/request-detail.js"></script>
     </body>
     </html>

@@ -23,6 +23,13 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
     
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+    <style>
+        .form-control{
+            background-color: white !important;
+            color: black !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -199,16 +206,35 @@
                                     <div class="col-md-4">
                                         <fieldset>
                                             <label for="qualification">Qualification</label>
-                                            <input name="qualification" type="text" class="form-control" id="qualification" placeholder="Qualification" required="">
+                                            <select name="qualification" class="form-control" id="qualification">
+                                                <option value="">---Select---</option>
+                                                <option value="BBA">BBA</option>
+                                                <option value="BCA">BCA</option>
+                                                <option value="B.Arch">B.Arch</option>
+                                                <option value="MCA">MCA</option>
+                                                <option value="MBA">MBA</option>
+                                            </select> <br>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-4">
                                         <fieldset>
                                             <label for="institute">Institute</label>
-                                            <input name="institute" type="text" class="form-control" id="institute" placeholder="Institute" required="">
+                                            <select name="institute" class="form-control" id="institute">
+                                                <option value="">---Select---</option>
+                                                <option value="Navrachana University">Navrachana University</option>
+                                                <option value="MSU">MSU</option>
+                                                <option value="SVIT">SVIT</option>
+                                                <option value="Charusat University">Charusat University</option>
+                                                <option value="Parul University">Parul University</option>
+                                            </select> <br>
                                         </fieldset>
                                     </div>
-                                    
+                                    <div class="col-md-4">
+                                        <fieldset>
+                                            <label for="dob">Enrollment No./Roll no.</label>
+                                            <input name="enrollment" type="text" class="form-control" id="enrollment" placeholder="Enrollment No." required="">
+                                        </fieldset>
+                                    </div>
                                     <!-- <div class="col-md-12">
                                         <fieldset>
                                             <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>

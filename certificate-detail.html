@@ -21,8 +21,15 @@
     <link rel="stylesheet" href="css/style.css">
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    
+    <style>
+        .form-control{
+            background-color: white !important;
+            color: black !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -137,35 +144,86 @@
             </ul> -->
         </div>
         
-        
-        
-        
-        <div class="page-content">
+        <div class="page-content">    
             <section id="contact" class="content-section">
                 <div id="contact-content">
                     <div class="section-heading">
-                        <h1>Manage<br><em>Requests</em></h1>
-                        <p>All your requests sent by any organisation
-                            <br>or institute will be visible here. 
-                        </p>
+                        <h1>
+                            Certificate<em> Detail</em>
+                        </h1>
+                        <!-- <p>For using services please fill the form.</p> -->
                         
                     </div>
-                    <div class="table-responsive">          
-                        <table class="table table-hover" style="text-align:left !important;" id="feedbacktable">
-                            <thead>
-                                <tr style="background-color: black; color: white; padding: 10px;">
-                                    <th>Received from</th>
-                                    <th>Org/Company Name</th>
-                                    <th>Request Date</th> 
-                                    <th>Request Status</th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    <div class="section-content">
+                        <form id="detsForm" action="#" method="post">
+                            <div class="row" style="text-align: left !important;">
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <label for="name">Name</label>
+                                        <input name="name" type="text" class="form-control" id="name" placeholder="Name" required="" readonly>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <label for="email">Email</label>
+                                        <input name="email" type="email" class="form-control" id="email" placeholder="Email" required="" readonly>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <fieldset>
+                                            <label for="qualification">Qualification</label>
+                                            <select name="qualification" class="form-control" id="qualification" readonly>
+                                                <option value="">---Select---</option>
+                                                <option value="BBA">BBA</option>
+                                                <option value="BCA">BCA</option>
+                                                <option value="B.Arch">B.Arch</option>
+                                                <option value="MCA">MCA</option>
+                                                <option value="MBA">MBA</option>
+                                            </select> <br>
+                                        </fieldset>
+                                    </fieldset>
+                                </div>
                                 
-                            </tbody>
-                        </table>
+                                <div class="col-md-6">
+                                    <fieldset>
+                                        <label for="title">Title</label>
+                                        <input name="title" type="text" class="form-control" id="title" placeholder="Certificate Title" required="" readonly>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-6">
+                                    <fieldset>
+                                        <label for="description">Description</label>
+                                        <input name="description" type="text" class="form-control" id="desc" placeholder="Description" required="" readonly>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <label for="dob">Issued By</label>
+                                        <input name="issuedby" type="text" class="form-control" id="issuedBy" placeholder="Issued By" required="" readonly>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <label for="dob">Issued Date</label>
+                                        <input name="issueddate" type="text" class="form-control" id="issuedDate" placeholder="Issued Date" required="" readonly>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-5 certImage">
+                                    <label for="certImage">Certificate</label>
+                                </div>
+                                <!-- <div class="col-md-12">
+                                    <fieldset>
+                                        <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+                                    </fieldset>
+                                </div> -->
+                                <div class="col-md-12">
+                                    <fieldset>
+                                        <a href="main.html#featured" style="background-color: black; padding: 10px; color: white;" class="btn">Back to Certificates list</a>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </section>
@@ -250,6 +308,6 @@
             firebase.initializeApp(firebaseConfig);
         </script>
         <!-- <script src="js_files/main.js"></script> -->
-        <script src="js_files/request.js"></script>
+        <script src="js_files/certificate-detail.js"></script>
     </body>
     </html>
