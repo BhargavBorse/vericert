@@ -16,6 +16,14 @@
     <link rel="stylesheet" href="css/owl-carousel.css">
     <link rel="stylesheet" href="css/login.css">
     
+    <!-- pwa integration -->
+    <link rel="manifest" href="manifest.json">
+    <!-- ios support -->
+    <link rel="apple-touch-icon" href="img/icons/icon-96x96.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
+    <meta name="theme-color" content="#FFE1C4">
+    <!-- pwa end -->
+
     <!--FirebaseUI-->
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
@@ -555,6 +563,7 @@
                                 // Initialize Firebase
                                 firebase.initializeApp(firebaseConfig);
                             </script>
+                            <script src="js_files/app.js"></script>
                             <script src="js_files/login.js"></script>
                             <!-- <script src="js_files/contact.js"></script> -->
                         </body>
