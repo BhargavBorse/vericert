@@ -38,7 +38,7 @@ self.addEventListener('install', evt => {
         })
         );
     });
-    
+    self.skipWaiting();
     // activate event
     self.addEventListener('activate', evt => {
         //console.log('service worker activated');
@@ -55,6 +55,7 @@ self.addEventListener('install', evt => {
             
             // fetch event
             self.addEventListener('fetch',  evt => {
+                console.log('Fetching: ', evt.request.url);
                 console.log('fetch event', evt);
                 evt.respondWith(
                     caches.match(evt.request).then(cacheRes => {
