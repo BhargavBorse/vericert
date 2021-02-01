@@ -10,13 +10,25 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
   <link rel="stylesheet" href="styles/login.css" />
+  
+  <!-- pwa integration -->
+  <link rel="manifest" href="manifest.json">
+  <!-- ios support -->
+  <link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
+  <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
+  <meta name="theme-color" content="#000000">
+  <!-- pwa end -->
+  
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/png" href="images/icons/icon-512x512.png" />
+  
 </head>
 <body>
-
+  
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-
+        
       </div>
       <div class="col-md-4">
         <div id="login_div" class="main-div">
@@ -31,13 +43,13 @@
         </div>
       </div>
       <div class="col-md-4">
-
+        
       </div>
     </div>
   </div>
-
-
-
+  
+  
+  
   <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
   <script>
     // Your web app's Firebase configuration
@@ -56,6 +68,6 @@
     firebase.initializeApp(firebaseConfig);
   </script>
   <script src="js_files/index.js"></script>
-
+  <script src="js_files/app.js"></script>
 </body>
 </html>

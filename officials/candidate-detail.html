@@ -14,6 +14,9 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
     
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="images/icons/icon-512x512.png" />
+
 </head>
 <body class="h-100">
     <div class="container-fluid">
@@ -21,67 +24,55 @@
             <!-- Main Sidebar -->
             <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
                 <div class="main-navbar">
-                    <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
-                        <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
-                            <div class="d-table m-auto">
-                                <!-- <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="images/shards-dashboards-logo.svg" alt="Shards Dashboard"> -->
-                                <span class="d-none d-md-inline ml-1">VERICERT Officials</span>
-                            </div>
-                        </a>
-                        <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
-                            <i class="material-icons">&#xE5C4;</i>
-                        </a>
-                    </nav>
+                  <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+                    <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
+                      <div class="d-table m-auto">
+                        <!-- <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="images/shards-dashboards-logo.svg" alt="Shards Dashboard"> -->
+                        <span class="d-none d-md-inline ml-1">VERICERT Officials</span>
+                      </div>
+                    </a>
+                    <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+                      <i class="material-icons">&#xE5C4;</i>
+                    </a>
+                  </nav>
                 </div>
                 <div class="nav-wrapper">
-                    <ul class="nav flex-column">
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">rule</i>
-                                <span class="">Manage Request</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-small">
-                                <a class="dropdown-item" href="">
-                                    <i class="material-icons">playlist_add</i> New Request
-                                </a>
-                                <a class="dropdown-item" href="view-candidate.html">
-                                    <i class="material-icons">&#xE7FD;</i> Request History
-                                </a>
-                            </div>
-                        </li> -->
-                        
-                        <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">input</i>
-                                <span class="">Issue Certificate</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-small">
-                                <a class="dropdown-item active" href="issue-certificate.html">
-                                    <i class="material-icons">add</i> Issue New Certificate
-                                </a>
-                                <!-- <a class="dropdown-item" href="remove-recruiter.html">
-                                    <i class="material-icons">remove</i> Remove Recruiter
-                                </a> -->
-                                <a class="dropdown-item" href="issued-history.html">
-                                    <i class="material-icons">done_outline</i> Issued History
-                                </a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="manage-profile.html">
-                                <i class="material-icons">account_circle</i>
-                                <span>Manage Profile</span>
-                            </a>
-                        </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link " href="contacted-vericert.html">
-                                <i class="material-icons">inbox</i>
-                                <span>Contacted Vericert</span>
-                            </a>
-                        </li> -->
-                    </ul>
+                  <ul class="nav flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link " href="main.html">
+                        <i class="material-icons">home</i>
+                        <span>Dashboard</span>
+                      </a>
+                    </li>
+                    <li class="nav-item dropdown active">
+                      <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">input</i>
+                        <span class="">Issue Certificate</span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-small">
+                        <a class="dropdown-item active" href="issue-certificate.html">
+                          <i class="material-icons">add</i> Issue New Certificate
+                        </a>
+                        <a class="dropdown-item" href="issued-history.html">
+                          <i class="material-icons">&#xE7FD;</i> Issued History
+                        </a>
+                      </div>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " href="candidate-list.html">
+                        <i class="material-icons">supervisor_account</i>
+                        <span>Candidate's List</span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " href="manage-profile.html">
+                        <i class="material-icons">account_circle</i>
+                        <span>Manage Profile</span>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
-            </aside>
+              </aside>
             <!-- End Main Sidebar -->
             <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
                 <div class="main-navbar sticky-top bg-white">

@@ -18,7 +18,8 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
-    
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="img/icons/icon-512x512.png" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/fontAwesome.css">
@@ -30,6 +31,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
+    <!-- pwa integration -->
+    <link rel="manifest" href="manifest.json">
+    <!-- ios support -->
+    <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
+    <meta name="theme-color" content="#000000">
+    <!-- pwa end -->
+    
 </head>
 
 <body>
@@ -393,7 +402,7 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <fieldset>
-                                                            <button type="button" id="subBtn" class="subBtn">Send Message Now</button>
+                                                            <button style="border: none;" type="button" id="subBtn" class="subBtn">Send Message Now</button>
                                                         </fieldset>
                                                     </div>
                                                 </div>
