@@ -41,6 +41,12 @@
                 <div class="nav-wrapper">
                     <ul class="nav flex-column">
                         <li class="nav-item">
+                            <a class="nav-link" href="main.html">
+                                <i class="material-icons">home</i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link " href="send-request.html">
                                 <i class="material-icons">input</i>
                                 <span>Send Request</span>
@@ -165,15 +171,24 @@
                                             <input type="date" class="form-control white_back" id="dob" placeholder="Date of Birth" required>
                                         </div>
                                         <div class="col-md-12">
-                                            <hr><h6 class="m-0"><strong>Institute Details</strong></h6><hr>
+                                            <hr><h6 class="m-0"><strong>Company Details</strong></h6><hr>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="ins_name">Institute Name:</label>
-                                            <input type="text" class="form-control white_back" id="ins_name" placeholder="Institute Name" required>
+                                            <fieldset>
+                                                <label for="institute">Company Name</label>
+                                                <select name="institute" class="form-control" id="ins_name">
+                                                    <option value="">---Select---</option>
+                                                    <option value="Atos">Atos</option>
+                                                    <option value="Wipro">Wipro</option>
+                                                    <option value="TCS">TCS</option>
+                                                    <option value="Reliance">Reliance</option>
+                                                    <option value="IBM">IBM</option>
+                                                </select> <br>
+                                            </fieldset>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="ins_add">Institute Address:</label>
-                                            <input type="text" class="form-control white_back" id="ins_add" placeholder="Institute Address" required>
+                                            <label for="ins_add">Company Address:</label>
+                                            <input type="text" class="form-control white_back" id="ins_add" placeholder="Company Address" required>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="des">Post/Designation:</label>

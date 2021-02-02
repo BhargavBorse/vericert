@@ -7,10 +7,10 @@ firebase.auth().onAuthStateChanged(function (user) {
         var displayName = user.displayName;
         var email = user.email;
         uid = user.uid;
-        if(displayName!=null)
-        {
-            document.getElementById('userName').innerText=displayName;
-        }
+        // if(displayName!=null)
+        // {
+        //     document.getElementById('userName').innerText=displayName;
+        // }
         // ...
     } else {
         // User is signed out.
@@ -112,7 +112,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                     enrollment: enrollment
                 });
                 alert('Details saved successfully');
-                window.location = 'main.html';
+                window.location.href = 'main.html';
             }
         }
     }

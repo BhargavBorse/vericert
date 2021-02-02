@@ -79,8 +79,17 @@
                                             <hr><h6 class="m-0"><strong>Institute Details</strong></h6><hr>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="ins_name">Institute Name:</label>
-                                            <input type="text" class="form-control" id="ins_name" placeholder="Institute Name" required>
+                                            <fieldset>
+                                                <label for="institute">Institute Name</label>
+                                                <select name="institute" class="form-control" id="institute">
+                                                    <option value="">---Select---</option>
+                                                    <option value="Navrachana University">Navrachana University</option>
+                                                    <option value="MSU">MSU</option>
+                                                    <option value="SVIT">SVIT</option>
+                                                    <option value="Charusat University">Charusat University</option>
+                                                    <option value="Parul University">Parul University</option>
+                                                </select> <br>
+                                            </fieldset>    
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="ins_add">Institute Address:</label>
@@ -109,12 +118,13 @@
                                     </div> <hr>
                                     <div class="form-group col-md-4">
                                         <!-- <button type="submit" onclick="getmail();" class="form-control btn-danger">Get Mail ID</button> -->
-                                        <button type="button" onclick="add_off();" class="form-control btn-danger">Create Account</button>
+                                        <button type="button" onclick="add_off();" class="form-control btn-danger">Create Account</button><br>
+                                        <button type="button" id="login_sign" style="visibility: hidden;" class="form-control btn-danger">Login</button> 
                                         <!-- <input type="submit" class="btn-danger form-control" value="Create Officials Account"> -->
                                     </div><hr>
                                     <div class="form-group col-md-4">
                                         <a href="index.html">
-                                            <i class="material-icons">keyboard_backspace</i> Back to login
+                                            <i class="material-icons">keyboard_backspace</i> Back
                                         </a>
                                     </div>
                                 </form>

@@ -81,6 +81,10 @@ firebase.auth().onAuthStateChanged(function (user) {
                 feed_time: time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
             });
             alert('Your query is sent to our representative.');
+            document.getElementById('subject').value = '';
+            document.getElementById('message').value = '';
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
             // location.reload();
             // end of storing data
         };

@@ -44,6 +44,42 @@ function add_off(){
     var gender = document.getElementById('gender').value;
     var dob = document.getElementById('dob').value;
     
+    if (name == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+    else if(email == "")
+    {
+        alert("Email must be filled out");
+        return false;
+    }
+    else if(phone_no == "")
+    {
+        alert("Phone number must be filled out");
+        return false;
+    }
+    else if(phone_no.length != 10)
+    {
+        alert("Phone number is in wrong format ");
+        phone_no.focus();
+        return false;
+    }
+    else if(address == "")
+    {
+        alert("Address must be filled out");
+        return false;
+    }
+    else if(dob == "")
+    {
+        alert("Date of birth must be filled out");
+        return false;
+    }
+    
+    else if(gender == "")
+    {
+        alert("Gender must be filled out");
+        return false;
+    }
     // var database = firebase.database().ref();
     firebase.database().ref().child('admin').child('-MRAK70sbVRekez7-H_S').update({
         name: name,

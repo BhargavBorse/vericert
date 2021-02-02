@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>VERICERT - Officials</title>
+    <title>VERICERT - Recruiter</title>
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -77,15 +77,24 @@
                                             <input type="date" class="form-control" id="dob" placeholder="Date of Birth" required>
                                         </div>
                                         <div class="col-md-12">
-                                            <hr><h6 class="m-0"><strong>Institute Details</strong></h6><hr>
+                                            <hr><h6 class="m-0"><strong>Company Details</strong></h6><hr>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="ins_name">Institute Name:</label>
-                                            <input type="text" class="form-control" id="ins_name" placeholder="Institute Name" required>
+                                            <fieldset>
+                                                <label for="institute">Company Name</label>
+                                                <select name="institute" class="form-control" id="institute">
+                                                    <option value="">---Select---</option>
+                                                    <option value="Atos">Atos</option>
+                                                    <option value="Wipro">Wipro</option>
+                                                    <option value="TCS">TCS</option>
+                                                    <option value="Reliance">Reliance</option>
+                                                    <option value="IBM">IBM</option>
+                                                </select> <br>
+                                            </fieldset>      
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="ins_add">Institute Address:</label>
-                                            <input type="text" class="form-control" id="ins_add" placeholder="Institute Address" required>
+                                            <label for="ins_add">Comapany Address:</label>
+                                            <input type="text" class="form-control" id="ins_add" placeholder="Company Address" required>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="des">Post/Designation:</label>
@@ -110,7 +119,8 @@
                                     </div> <hr>
                                     <div class="form-group col-md-4">
                                         <!-- <button type="submit" onclick="getmail();" class="form-control btn-danger">Get Mail ID</button> -->
-                                        <button type="button" onclick="add_off();" class="form-control btn-danger">Create Account</button>
+                                        <button type="button" onclick="add_off();" class="form-control btn-danger">Create Account</button> <br>
+                                        <button type="button" id="login_sign" style="visibility: hidden;" class="form-control btn-danger">Login</button> 
                                         <!-- <input type="submit" class="btn-danger form-control" value="Create Officials Account"> -->
                                     </div><hr>
                                     <div class="form-group col-md-4">

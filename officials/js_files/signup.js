@@ -31,7 +31,7 @@ function add_off(){
     var address = document.getElementById('address').value;
     var gender = document.getElementById('gender').value;
     var dob = document.getElementById('dob').value;
-    var ins_name = document.getElementById('ins_name').value;
+    var ins_name = document.getElementById('institute').value;
     var ins_add = document.getElementById('ins_add').value;
     var designation = document.getElementById('designation').value;
     var e_id = document.getElementById('e_id').value;
@@ -39,7 +39,62 @@ function add_off(){
     // var email_two = document.getElementById('email_two').value;
     var password = document.getElementById('password').value;
     
-    // var database = firebase.database().ref();
+    if (name == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+    else if(email == "")
+    {
+        alert("Email must be filled out");
+        return false;
+    }
+    else if(phone_no == "")
+    {
+        alert("Phone number must be filled out");
+        return false;
+    }
+    else if(phone_no.length != 10)
+    {
+        alert("Phone number is in wrong format ");
+        phone_no.focus();
+        return false;
+    }
+    else if(address == "")
+    {
+        alert("Address must be filled out");
+        return false;
+    }
+    else if(dob == "")
+    {
+        alert("Date of birth must be filled out");
+        return false;
+    }
+    
+    else if(gender == "")
+    {
+        alert("Gender must be filled out");
+        return false;
+    }
+    else if(ins_name == "")
+    {
+        alert("Institute Name must be filled out");
+        return false;
+    }
+    else if(ins_add == "")
+    {
+        alert("Institute address must be filled out");
+        return false;
+    }
+    else if(designation == "")
+    {
+        alert("Designation must be filled out");
+        return false;
+    }
+    else if(e_id == "")
+    {
+        alert("Employee Id must be filled out");
+        return false;
+    }
     
     firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
         // Signed in 
@@ -59,8 +114,10 @@ function add_off(){
             login_status: 'inactive'
         });
         console.log(user);
-        alert('Account created');
-        // window.location.replace('index.html');
+        alert('Account has been created, please click login button');
+        var login_vis = document.getElementById('login_sign');
+        login_vis.style.visibility = 'visible';
+        // window.location.href = 'index.html';
     })
     .catch((error) => {
         var errorCode = error.code;
@@ -68,6 +125,10 @@ function add_off(){
         // ..
         window.alert("Error : " + errorMessage);
     });
+}
+
+document.getElementById('login_sign').onclick = function(){
+    window.location.replace('main.html');
 }
 
 function getmail()
