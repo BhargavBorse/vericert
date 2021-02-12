@@ -52,7 +52,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                 var mm = today.getMonth()+1; //January is 0!
                 var yyyy = today.getFullYear();
                 var final_date = dd+"-"+mm+"-"+yyyy;
-                
+                   
                 var filename = selectedFile.name;
                 var storageRef = firebase.storage().ref('/'+id+'/'+filename);
                 var uploadTask = storageRef.put(selectedFile);

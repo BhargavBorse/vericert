@@ -13,6 +13,20 @@ firebase.auth().onAuthStateChanged(function(user) {
     //   document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
     
     // }
+    firebase.database().ref().child('admin').child('-MRAK70sbVRekez7-H_S').on('value',function(admin_snapshot){
+      var admin_snap = admin_snapshot.val();
+      // alert(admin_snap.email);
+      // alert(user.email);
+      if(admin_snap.email == user.email)
+      {
+        
+      }
+      else
+      {
+        alert('Unauthorized Access');
+        firebase.auth().signOut();
+      }
+    });
     var email_id = user.email;
     //   alert(email_id);
     document.getElementById("user_para").innerHTML = email_id;

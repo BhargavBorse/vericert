@@ -112,6 +112,89 @@ firebase.auth().onAuthStateChanged(function(user) {
                         // id_cell = appendChild(id_value_cell);   
                     });
                 }); 
+
+
+
+                eventRef.child(user.uid).child('achievements').on('child_added',function(return_deep_value){
+                    var return_deep = return_deep_value.key;
+                    
+                    eventRef.child(user.uid).child('achievements').child(return_deep).on('value',function(return_deep_deep_value){
+                        var return_det = return_deep_deep_value.val();
+                        
+                        var title_fetch = return_det.title;
+                        var description_fetch = return_det.description;
+                        var date_fetch = return_det.issuedDate;
+                        var tableRef = document.getElementById('feedtable').getElementsByTagName('tbody')[0];
+                        
+                        // Insert a row in the table at the last row
+                        var newRow   = tableRef.insertRow(tableRef.rows.length);
+                        var aimageCell = newRow.insertCell(0);
+                        
+                        // Insert a cell in the row at index 0
+                        
+                        var decrypted = CryptoJS.AES.decrypt(return_deep_deep_value.child('imageURL').val(), "Secret Passphrase");
+                        
+                        var updivcreate = document.createElement('div');
+                        var divcreate = document.createElement('div');
+                        divcreate.className = 'image';
+                        updivcreate.className = 'item';
+                        var aimageCellValue = document.createElement('a');
+                        
+                        aimageCellValue.setAttribute('href',decrypted.toString(CryptoJS.enc.Utf8));
+                        
+                        aimageCellValue.setAttribute('data-lightbox','image');
+                        
+                        aimageCellValue.setAttribute('target','_blank');
+                        
+                        var imageCellValue = document.createElement('img');
+                        
+                        imageCellValue.setAttribute('src',decrypted.toString(CryptoJS.enc.Utf8));
+                        
+                        // imageCellValue.setAttribute('class','image');
+                        
+                        // imageCellValue.style.borderRadius = "50%";
+                        
+                        // imageCellValue.setAttribute('border-radius','50%');
+                        
+                        imageCellValue.setAttribute('height','50px');
+                        
+                        imageCellValue.setAttribute('width','80px');
+                        
+                        // imageCellValue.setAttribute('max-width','50%');
+                        updivcreate.appendChild(divcreate);
+                        divcreate.appendChild(aimageCellValue);
+                        aimageCellValue.appendChild(imageCellValue);
+                        
+                        aimageCell.appendChild(aimageCellValue);
+                        
+                        var title_cell = newRow.insertCell(1);
+                        var description_cell = newRow.insertCell(2);
+                        var date_cell = newRow.insertCell(3);
+                        var more_details_cell = newRow.insertCell(4);
+                        // var id_cell = newRow.insertCell(4).hidden;
+                        
+                        // Append a text node to the cell
+                        var title_value_cell = document.createTextNode(title_fetch);
+                        var description_value_cell = document.createTextNode(description_fetch);
+                        var date_value_cell = document.createTextNode(date_fetch);
+                        // var id_value_cell = document.createTextNode(id);
+                        
+                        var alink_more_details = document.createElement("a");
+                        var alink_more_details_text = document.createTextNode('More Detail');
+                        alink_more_details.appendChild(alink_more_details_text);
+                        alink_more_details.setAttribute('class',"btn btn-info");
+                        alink_more_details.setAttribute('style','border: none;')
+                        // alink_more_details.setAttribute('class',"fa fa-info")
+                        alink_more_details.href = "achievement-detail.html?id="+return_deep;
+                        
+                        
+                        title_cell.appendChild(title_value_cell);
+                        description_cell.appendChild(description_value_cell);
+                        date_cell.appendChild(date_value_cell);
+                        more_details_cell.appendChild(alink_more_details);
+                        // id_cell = appendChild(id_value_cell);   
+                    });
+                }); 
             }
         });
     }
