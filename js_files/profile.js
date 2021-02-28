@@ -54,7 +54,6 @@ firebase.auth().onAuthStateChanged(function (user) {
                 else if(phone_no.length != 10)
                 {
                     alert("Phone number is in wrong format ");
-                    phone_no.focus();
                     return false;
                 }
                 else if(address == "")

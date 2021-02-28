@@ -1,29 +1,31 @@
 // firebase.auth().onAuthStateChanged(function(user) {
 //     if (user) {
 //         // User is signed in.
-        
+
 //         // document.getElementById("user_div").style.display = "block";
 //         // document.getElementById("login_div").style.display = "none";
-        
+
 //         // var user = firebase.auth().currentUser;
-        
+
 //         // if(user != null){
-        
+
 //         //   var email_id = user.email;
 //         //   document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
-        
+
 //         // }
-        
+
 //         var email_id = user.email;
 //         //   alert(email_id);
 //         document.getElementById("user_para").innerHTML = email_id;
-        
+
 //     } else {
 //         // No user is signed in.
 //         window.location.replace('index.html');
 //     }
 // });
-
+document.getElementById('file').onchange = function(event){
+    selectedFile = event.target.files[0];
+}
 function add_off(){
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
@@ -38,6 +40,9 @@ function add_off(){
     var officials = document.getElementById('officials').value;
     // var email_two = document.getElementById('email_two').value;
     var password = document.getElementById('password').value;
+    var file = document.getElementById('file').value;
+    
+    
     
     if (name == "") {
         alert("Name must be filled out");
@@ -56,7 +61,6 @@ function add_off(){
     else if(phone_no.length != 10)
     {
         alert("Phone number is in wrong format ");
-        phone_no.focus();
         return false;
     }
     else if(address == "")
@@ -80,6 +84,11 @@ function add_off(){
         alert("Institute Name must be filled out");
         return false;
     }
+    else if(file == "")
+    {
+        alert("Please choose a Id Card to upload");
+        return false;
+    }
     else if(ins_add == "")
     {
         alert("Institute address must be filled out");
@@ -96,35 +105,93 @@ function add_off(){
         return false;
     }
     
-    firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
-        // Signed in 
-        // ...
-        firebase.database().ref().child('officials').push({
-            name: name,
-            email: email, 
-            phone_no: phone_no,
-            address: address,
-            gender: gender,
-            dob: dob,
-            ins_name: ins_name,
-            ins_add: ins_add,
-            designation: designation,
-            e_id: e_id,
-            role: officials,
-            login_status: 'inactive'
+    var filename = selectedFile.name;
+    var storageRef = firebase.storage().ref('officials'+'/'+filename);
+    var uploadTask = storageRef.put(selectedFile);
+    uploadTask.on('state_changed',function(snapshot){
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        alert('Upload Progress : '+progress+'%');
+    },function(error){
+        
+    },function(){
+        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
+            var encrypted = CryptoJS.AES.encrypt(downloadURL,"Secret Passphrase")
+            firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
+                // Signed in 
+                // ...
+                firebase.database().ref().child('officials').push({
+                    imageURL : encrypted.toString(),
+                    name: name,
+                    email: email, 
+                    phone_no: phone_no,
+                    address: address,
+                    gender: gender,
+                    dob: dob,
+                    ins_name: ins_name,
+                    ins_add: ins_add,
+                    designation: designation,
+                    e_id: e_id,
+                    role: officials,
+                    login_status: 'inactive'
+                });
+                firebase.database().ref().child('merged').push({
+                    imageURL : encrypted.toString(),
+                    name: name,
+                    email: email, 
+                    phone_no: phone_no,
+                    address: address,
+                    gender: gender,
+                    dob: dob,
+                    ins_name: ins_name,
+                    ins_add: ins_add,
+                    designation: designation,
+                    e_id: e_id,
+                    role: officials,
+                    login_status: 'inactive'
+                });
+                console.log(user);
+                alert('Account has been created, please click login button');
+                var login_vis = document.getElementById('login_sign');
+                login_vis.style.visibility = 'visible';
+                // window.location.href = 'index.html';
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ..
+                window.alert("Error : " + errorMessage);
+            });
         });
-        console.log(user);
-        alert('Account has been created, please click login button');
-        var login_vis = document.getElementById('login_sign');
-        login_vis.style.visibility = 'visible';
-        // window.location.href = 'index.html';
-    })
-    .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ..
-        window.alert("Error : " + errorMessage);
     });
+    // firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
+    //     // Signed in 
+    //     // ...
+    //     firebase.database().ref().child('officials').push({
+    //         name: name,
+    //         email: email, 
+    //         phone_no: phone_no,
+    //         address: address,
+    //         gender: gender,
+    //         dob: dob,
+    //         ins_name: ins_name,
+    //         ins_add: ins_add,
+    //         designation: designation,
+    //         e_id: e_id,
+    //         role: officials,
+    //         login_status: 'inactive'
+    //     });
+    //     console.log(user);
+    //     alert('Account has been created, please click login button');
+    //     var login_vis = document.getElementById('login_sign');
+    //     login_vis.style.visibility = 'visible';
+    //     // window.location.href = 'index.html';
+    // })
+    // .catch((error) => {
+    //     var errorCode = error.code;
+    //     var errorMessage = error.message;
+    //     // ..
+    //     window.alert("Error : " + errorMessage);
+    // });
 }
 
 document.getElementById('login_sign').onclick = function(){

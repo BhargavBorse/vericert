@@ -72,6 +72,17 @@ firebase.auth().onAuthStateChanged(function(user) {
       var subject = document.getElementById('subject').value;
       var message = document.getElementById('message').value;
       
+      if(subject == '')
+      {
+        alert('Please enter subject');
+        return false;
+      }
+      else if(message == '')
+      {
+        alert('Please enter message');
+        return false;
+      }
+      
       firebase.database().ref().child('notes').push({
         subject: subject,
         message: message

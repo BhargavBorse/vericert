@@ -53,6 +53,21 @@ firebase.auth().onAuthStateChanged(function(user) {
                 var yyyy = today.getFullYear();
                 var final_date = dd+"-"+mm+"-"+yyyy;
                    
+                if (title == "") {
+                    alert("Title must be filled out");
+                    return false;
+                }
+                else if(description == "")
+                {
+                    alert("Description must be filled out");
+                    return false;
+                }
+                else if(file == "")
+                {
+                    alert("Please choose a certificate to upload");
+                    return false;
+                }
+                
                 var filename = selectedFile.name;
                 var storageRef = firebase.storage().ref('/'+id+'/'+filename);
                 var uploadTask = storageRef.put(selectedFile);
@@ -76,7 +91,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                         });
                         
                     });
-                    alert('Certificate issued to: ' +snap.name);
+                    alert('Updated details of: ' +snap.name + '. Click on issued certificates to view');
+                    var hid = document.getElementById('redi');
+                    hid.style.visibility = 'visible';
                     // window.location.reload();
                     // document.getElementById('remove_photo').click();
                     // document.getElementById('caption_value').value = "";
@@ -89,7 +106,9 @@ firebase.auth().onAuthStateChanged(function(user) {
         window.location.replace('index.html');
     }
 });
-
+document.getElementById('redi').onclick = (function(){
+    window.location.replace('issued-history.html');
+});
 function logout(){
     firebase.auth().signOut();
 }

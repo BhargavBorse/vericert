@@ -12,7 +12,7 @@
     <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="styles/danger.1.1.0.css">
     <link rel="stylesheet" href="styles/extras.1.1.0.min.css">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
     <!-- favicon -->
     <link rel="shortcut icon" type="image/png" href="images/icons/icon-512x512.png" />
     <link rel="apple-touch-icon" href="images/icons/icon-512x512.png">
@@ -220,15 +220,15 @@
                                             <input type="date" class="form-control white_back" id="dob" placeholder="Date of Birth" required readonly>
                                         </div>
                                         <div class="col-md-12">
-                                            <hr><h6 class="m-0"><strong>Institute Details</strong></h6><hr>
+                                            <hr><h6 class="m-0"><strong>Company Details</strong></h6><hr>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="ins_name">Institute Name:</label>
-                                            <input type="text" class="form-control white_back" id="ins_name" placeholder="Institute Name" required readonly>
+                                            <label for="ins_name">Company Name:</label>
+                                            <input type="text" class="form-control white_back" id="ins_name" placeholder="Company Name" required readonly>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="ins_add">Institute Address:</label>
-                                            <input type="text" class="form-control white_back" id="ins_add" placeholder="Institute Address" required readonly>
+                                            <label for="ins_add">Company Address:</label>
+                                            <input type="text" class="form-control white_back" id="ins_add" placeholder="Company Address" required readonly>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="des">Post/Designation:</label>
@@ -242,15 +242,24 @@
                                             <label for="role">Role</label>
                                             <input type="text" class="form-control white_back" id="role" readonly>
                                         </div>
+                                        <div class="col-md-12 certImage">
+                                            <label for="certImage">Company ID Card:</label>
+                                        </div>
                                         <div class="col-md-12">
                                             <hr>
                                         </div>
                                         <div class="form-group col-md-2">
                                             <button type="button" onclick="inactive();" class="form-control btn-danger">Activate</button>
                                         </div>
-                                        <!-- <div class="form-group col-md-2">
-                                            <button type="button" onclick="del_rec();" class="form-control btn-danger">Delete Recruiter</button>
-                                        </div> -->
+                                        <div class="form-group col-md-2">
+                                            <button type="button" id="back" class="form-control btn-danger">Back to requests</button>
+                                        </div>
+                                        <div class="form-group col-md-2" id="deleteRequest">
+                                            <!-- <button type="button" id="back" class="form-control btn-danger">Back to requests</button> -->
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <button type="button" style="visibility: hidden;" id="redi" class="form-control btn-danger">View Recruiters</button>
+                                        </div>
                                     </div> 
                                 </form>
                             </div>

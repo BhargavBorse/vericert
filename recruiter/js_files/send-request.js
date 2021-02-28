@@ -106,7 +106,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                             }
                             else
                             {
-                                alert('No such record found!');
+                                // alert('No such record found!');
                             }
                         });
                     });

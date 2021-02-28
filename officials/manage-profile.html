@@ -172,11 +172,21 @@
                                             <input type="date" class="form-control white_back" id="dob" placeholder="Date of Birth" required>
                                         </div>
                                         <div class="col-md-12">
-                                            <hr><h6 class="m-0"><strong>Institute Details</strong></h6><hr>
+                                            <hr><h6 class="m-0"><strong>Institute Details</strong></h6><i>You cannot change institute name after registering.</i><hr>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="ins_name">Institute Name:</label>
-                                            <input type="text" class="form-control white_back" id="ins_name" placeholder="Institute Name" required>
+                                            <fieldset>
+                                                <label for="institute">Institute</label>
+                                                <!-- <select name="institute" class="form-control" id="ins_name" readonly>
+                                                    <option value="">---Select---</option>
+                                                    <option value="Navrachana University">Navrachana University</option>
+                                                    <option value="MSU">MSU</option>
+                                                    <option value="SVIT">SVIT</option>
+                                                    <option value="Charusat University">Charusat University</option>
+                                                    <option value="Parul University">Parul University</option>
+                                                </select> <br> -->
+                                                <input type="text" class="form-control" placeholder="Institute Name" id="ins_name" readonly>
+                                            </fieldset>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="ins_add">Institute Address:</label>

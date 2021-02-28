@@ -65,12 +65,21 @@ firebase.auth().onAuthStateChanged(function (user) {
             document.getElementById('issuedDate').value = user_details.issuedDate;
             document.getElementById('certId').value = user_details.certId;
             document.getElementById('certUrl').value = user_details.certUrl;
+            
+            var main = document.getElementById('mainAnchor');
+            
+            var alink_more_details = document.createElement("a");
+            var alink_more_details_text = document.createTextNode('Delete');
+            alink_more_details.appendChild(alink_more_details_text);
+            alink_more_details.setAttribute('class',"btn btn-danger mainButton");
+            alink_more_details.href = "emptyDel.html?id="+id+"&&userId="+ user.uid;
+            main.appendChild(alink_more_details);
         });
         
         document.getElementById('file').onchange = function(event){
             selectedFile = event.target.files[0];
         }
-
+        
         document.getElementById('add_off').onclick = function(){
             if (document.getElementById('detsForm')!=null)
             {
@@ -83,6 +92,14 @@ firebase.auth().onAuthStateChanged(function (user) {
                 var certId = document.getElementById('certId').value;
                 var certUrl = document.getElementById('certUrl').value;
                 var certImage = document.getElementById('file').value;
+                
+                var expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+                var regex = new RegExp(expression);
+                if (certUrl.match(regex)) {
+                    // alert("Successful match");
+                } else {
+                    alert("URL in wrong format");
+                }
                 
                 if (name == "") {
                     alert("Name must be filled out");
@@ -161,7 +178,8 @@ firebase.auth().onAuthStateChanged(function (user) {
                             uploadDate: final_date
                         });
                         alert('Achievement certificate is updated');
-                        // window.location.href='main.html';
+                        // window.location.href='main.html#blog';
+                        window.location.reload();
                     });
                     // var hid = document.getElementById('redi');
                     // hid.style.visibility = 'visible';

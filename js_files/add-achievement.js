@@ -27,7 +27,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         document.getElementById('file').onchange = function(event){
             selectedFile = event.target.files[0];
         }
-
+        
         document.getElementById('add_off').onclick = function(){
             if (document.getElementById('detsForm')!=null)
             {
@@ -41,6 +41,14 @@ firebase.auth().onAuthStateChanged(function (user) {
                 var certUrl = document.getElementById('certUrl').value;
                 var certImage = document.getElementById('file').value;
                 
+                var expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+                var regex = new RegExp(expression);
+                if (certUrl.match(regex)) {
+                    // alert("Successful match");
+                } else {
+                    alert("URL in wrong format");
+                }
+                
                 if (name == "") {
                     alert("Name must be filled out");
                     return false;
@@ -50,6 +58,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                     alert("Email must be filled out");
                     return false;
                 }
+                
                 else if(issuedBy == "")
                 {
                     alert("Issued by must be filled out");
@@ -90,7 +99,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 var mm = today.getMonth()+1; //January is 0!
                 var yyyy = today.getFullYear();
                 var final_date = dd+"-"+mm+"-"+yyyy;
-
+                
                 var filename = selectedFile.name;
                 var storageRef = firebase.storage().ref('/'+user.uid+'/'+'achievements'+'/'+filename);
                 var uploadTask = storageRef.put(selectedFile);

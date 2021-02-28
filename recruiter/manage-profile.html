@@ -171,19 +171,20 @@
                                             <input type="date" class="form-control white_back" id="dob" placeholder="Date of Birth" required>
                                         </div>
                                         <div class="col-md-12">
-                                            <hr><h6 class="m-0"><strong>Company Details</strong></h6><hr>
+                                            <hr><h6 class="m-0"><strong>Company Details</strong></h6><i>You cannot change company name after registering.</i><hr>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <fieldset>
                                                 <label for="institute">Company Name</label>
-                                                <select name="institute" class="form-control" id="ins_name">
+                                                <!-- <select name="institute" class="form-control" id="ins_name" readonly>
                                                     <option value="">---Select---</option>
                                                     <option value="Atos">Atos</option>
                                                     <option value="Wipro">Wipro</option>
                                                     <option value="TCS">TCS</option>
                                                     <option value="Reliance">Reliance</option>
                                                     <option value="IBM">IBM</option>
-                                                </select> <br>
+                                                </select> <br> -->
+                                                <input type="text" class="form-control" placeholder="Institute Name" id="ins_name" readonly>
                                             </fieldset>
                                         </div>
                                         <div class="form-group col-md-6">

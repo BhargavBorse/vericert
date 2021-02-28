@@ -25,15 +25,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 firebase.database().ref().child('users').on('child_added',function(feed_snapshot){
     var usersKey = feed_snapshot.key;
-    firebase.database().ref().child('users').child(usersKey).child('certificates').on('value',function(feed_deep_snapshot){
-        var feed_deep_name = feed_deep_snapshot.key;
-        
-        if(feed_deep_name === 'certificates')
-        {
-            
-            firebase.database().ref().child('users').child(usersKey).child('user_details').on('value',function(snapshot_user){
-                var feed_deep_user = snapshot_user.val();
-                
+    firebase.database().ref().child('users').child(usersKey).child('user_details').on('value',function(snapshot_user){
+        var feed_deep_user = snapshot_user.val();
+        firebase.database().ref().child('users').child(usersKey).child('certificates').on('value',function(feed_deep_snapshot){
+            var feed_deep_name = feed_deep_snapshot.key;
+
+            if(feed_deep_name == 'certificates')
+            {
                 var iss_name = feed_deep_user.name;
                 var iss_email = feed_deep_user.email;
                 var iss_qualification = feed_deep_user.qualification;
@@ -70,9 +68,9 @@ firebase.database().ref().child('users').on('child_added',function(feed_snapshot
                 // date_cell.appendChild(date_value_cell);
                 more_details_cell.appendChild(alink_more_details);
                 // id_cell = appendChild(id_value_cell);
-            });
-            
-        }
+                
+            }
+        });
     });
 });
 

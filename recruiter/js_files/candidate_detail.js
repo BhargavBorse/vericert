@@ -91,9 +91,12 @@ firebase.auth().onAuthStateChanged(function(user) {
                         insAddress: rec_snap.ins_add,
                         recDesignation: rec_snap.designation,
                         userId: id,
-                        requestStatus: 'pending'
+                        requestStatus: 'pending',
+                        userUid: user.uid
                     });
-                    alert('Request Sent');
+                    alert('Request Sent. Please click on view request to view status.');
+                    var hid = document.getElementById('viewReq');
+                    hid.style.visibility = 'visible';
                 }   // alert(cert_deep_det.title);
             });
         });
@@ -103,6 +106,10 @@ firebase.auth().onAuthStateChanged(function(user) {
         // No user is signed in.
         window.location.replace('index.html');
     }
+});
+
+document.getElementById('viewReq').onclick = (function(){
+    window.location.replace('request-status.html');
 });
 
 function logout(){

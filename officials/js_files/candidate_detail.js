@@ -90,7 +90,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                             user_name: ouser_name,
                             user_id: id,
                             user_email: ouser_email,
-                            user_qualification: ouser_qualification 
+                            user_qualification: ouser_qualification ,
+                            off_uid: user.uid
                         });
                         
                     });

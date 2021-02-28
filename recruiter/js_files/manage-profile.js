@@ -52,6 +52,67 @@ firebase.auth().onAuthStateChanged(function(user) {
                     var e_id = document.getElementById('e_id').value;
                     var role = document.getElementById('role').value;
                     
+                    if(name == "")
+                    {
+                        alert('Name must be filled out.');
+                        return false;
+                    }
+                    else if(email == "")
+                    {   
+                        alert('Email must be filled out.');
+                        return false;
+                    }
+                    else if(phone_no == "")
+                    {   
+                        alert('Phone number must be filled out.');
+                        return false;
+                    }
+                    else if(phone_no.length != 10)
+                    {
+                        alert("Phone number is in wrong format ");
+                        return false;
+                    }
+                    else if(address == "")
+                    {   
+                        alert('Address must be filled out.');
+                        return false;
+                    }
+                    else if(gender == "")
+                    {   
+                        alert('Gender must be filled out.');
+                        return false;
+                    }
+                    else if(dob == "")
+                    {   
+                        alert('Date of Birth must be filled out.');
+                        return false;
+                    }
+                    else if(ins_name == "")
+                    {   
+                        alert('Institute name must be filled out.');
+                        return false;
+                    }
+                    else if(ins_add == "")
+                    {   
+                        alert('Institute address must be filled out.');
+                        return false;
+                    }
+                    else if(designation == "")
+                    {   
+                        alert('Designation must be filled out.');
+                        return false;
+                    }
+                    else if(e_id == "")
+                    {   
+                        alert('Employee Id must be filled out.');
+                        return false;
+                    }
+                    else if(role == "")
+                    {   
+                        alert('Role must be filled out.');
+                        return false;
+                    }
+                    
                     firebase.database().ref().child('recruiter').child(key).update({
                         name: name,
                         email: email,
