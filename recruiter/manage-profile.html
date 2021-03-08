@@ -15,7 +15,8 @@
     
     <link rel="apple-touch-icon" href="images/icons/icon-512x512.png">
     <meta name="apple-mobile-web-app-status-bar" content="#000000">
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <!-- favicon -->
     <link rel="shortcut icon" type="image/png" href="images/icons/icon-512x512.png" />
     
@@ -27,7 +28,7 @@
             <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
                 <div class="main-navbar">
                     <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
-                        <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
+                        <a class="navbar-brand w-100 mr-0" href="main.html" style="line-height: 25px;">
                             <div class="d-table m-auto">
                                 <!-- <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="images/shards-dashboards-logo.svg" alt="Shards Dashboard"> -->
                                 <span class="d-none d-md-inline ml-1">VERICERT Recruiter</span>
@@ -135,7 +136,7 @@
                         <!-- Quick Post -->
                         <div class="card card-small h-100">
                             <div class="card-header border-bottom">
-                                <h6 class="m-0">Personal Details</h6>
+                                <h6 class="m-0">Personal Details</h6><i>You cannot change Id proof after registering.</i>
                             </div>
                             <div class="card-body d-flex form-row flex-column">
                                 <form id="simple_form">
@@ -170,8 +171,11 @@
                                             <label for="dob">Date of Birth:</label>
                                             <input type="date" class="form-control white_back" id="dob" placeholder="Date of Birth" required>
                                         </div>
+                                        <div class="col-md-5 certImage">
+                                            <label for="certImage">Id Proof</label>
+                                        </div>
                                         <div class="col-md-12">
-                                            <hr><h6 class="m-0"><strong>Company Details</strong></h6><i>You cannot change company name after registering.</i><hr>
+                                            <hr><h6 class="m-0"><strong>Company Details</strong></h6><i>You cannot change company name and id after registering.</i><hr>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <fieldset>
@@ -202,6 +206,9 @@
                                         <div class="form-group col-md-4">
                                             <label for="role">Role</label>
                                             <input type="text" class="form-control white_back" id="role" readonly>
+                                        </div>
+                                        <div class="col-md-5 insImage">
+                                            <label for="insImage">Institute Id</label>
                                         </div>
                                         <div class="col-md-12">
                                             <hr>

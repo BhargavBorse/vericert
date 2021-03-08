@@ -24,6 +24,93 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             if(user.email == user_details.email){
                 // alert('inactive');
+                
+
+
+
+                var user_details = user_details_snapshot.val();
+                
+                var aimageCellid = document.createElement('div');
+                document.getElementsByClassName('insImage')[0].appendChild(aimageCellid);
+                var decryptedid = CryptoJS.AES.decrypt(user_details_snapshot.child('imageURL').val(), "Secret Passphrase");
+                
+                var updivcreateid = document.createElement('div');
+                var divcreateid = document.createElement('div');
+                divcreateid.className = 'image';
+                updivcreateid.className = 'item';
+                var aimageCellValueid = document.createElement('a');
+                
+                aimageCellValueid.setAttribute('href',decryptedid.toString(CryptoJS.enc.Utf8));
+                
+                aimageCellValueid.setAttribute('data-lightbox','image');
+                
+                aimageCellValueid.setAttribute('target','_blank');
+                
+                var imageCellValueid = document.createElement('img');
+                
+                imageCellValueid.setAttribute('src',decryptedid.toString(CryptoJS.enc.Utf8));
+                
+                // imageCellValue.setAttribute('class','image');
+                
+                // imageCellValue.style.borderRadius = "50%";
+                
+                // imageCellValue.setAttribute('border-radius','50%');
+                
+                imageCellValueid.setAttribute('height','250px');
+                
+                imageCellValueid.setAttribute('width','350px');
+                imageCellValueid.setAttribute('style','padding-bottom: 15px;');
+                // imageCellValue.setAttribute('max-width','50%');
+                updivcreateid.appendChild(divcreateid);
+                divcreateid.appendChild(aimageCellValueid);
+                aimageCellValueid.appendChild(imageCellValueid);
+                
+                aimageCellid.appendChild(aimageCellValueid);
+
+
+
+
+                var user_details = user_details_snapshot.val();
+                
+                var aimageCell = document.createElement('div');
+                document.getElementsByClassName('certImage')[0].appendChild(aimageCell);
+                var decrypted = CryptoJS.AES.decrypt(user_details_snapshot.child('idImageURL').val(), "Secret Passphrase");
+                
+                var updivcreate = document.createElement('div');
+                var divcreate = document.createElement('div');
+                divcreate.className = 'image';
+                updivcreate.className = 'item';
+                var aimageCellValue = document.createElement('a');
+                
+                aimageCellValue.setAttribute('href',decrypted.toString(CryptoJS.enc.Utf8));
+                
+                aimageCellValue.setAttribute('data-lightbox','image');
+                
+                aimageCellValue.setAttribute('target','_blank');
+                
+                var imageCellValue = document.createElement('img');
+                
+                imageCellValue.setAttribute('src',decrypted.toString(CryptoJS.enc.Utf8));
+                
+                // imageCellValue.setAttribute('class','image');
+                
+                // imageCellValue.style.borderRadius = "50%";
+                
+                // imageCellValue.setAttribute('border-radius','50%');
+                
+                imageCellValue.setAttribute('height','250px');
+                
+                imageCellValue.setAttribute('width','350px');
+                imageCellValue.setAttribute('style','padding-bottom: 15px;');
+                // imageCellValue.setAttribute('max-width','50%');
+                updivcreate.appendChild(divcreate);
+                divcreate.appendChild(aimageCellValue);
+                aimageCellValue.appendChild(imageCellValue);
+                
+                aimageCell.appendChild(aimageCellValue);
+                
+                
+                
                 document.getElementById('name').value = user_details.name;
                 document.getElementById('email').value = user_details.email;
                 document.getElementById('phone_no').value = user_details.phone_no;
@@ -35,7 +122,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                 document.getElementById('designation').value = user_details.designation;
                 document.getElementById('e_id').value = user_details.e_id;
                 document.getElementById('role').value = user_details.role;
-                
                 
                 
                 document.getElementById('add_off').onclick = function()
@@ -130,6 +216,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     alert('Updated');
                 }
             }
+            
         });
         
     } else {

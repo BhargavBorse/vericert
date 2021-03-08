@@ -21,7 +21,8 @@ firebase.auth().onAuthStateChanged(function(user) {
         var url_string = window.location.href;
         var url = new URL(url_string);
         var id = url.searchParams.get("userId");
-        var officialsId = url.searchParams.get("issuerId");
+        var requesterId = url.searchParams.get("requesterId");
+        var reqId = url.searchParams.get("reqId");
         
         firebase.database().ref().child('users').child(id).child('user_details').on('value',function(feed_snapshot){
             var snap = feed_snapshot.val();
@@ -48,7 +49,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                     document.getElementById('expiryDate').value = req_deep.expiryDate;
                     var status = req_deep.requestStatus;
                     
-                    
                     n =  new Date();
                     y = n.getFullYear();
                     m = n.getMonth() + 1;
@@ -63,6 +63,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                             });
                             alert('Your request has expired.');
                             document.getElementById('status').innerHTML = status;
+                            
+                            var status_hide = document.getElementById('reject');
+                            status_hide.style.visibility = 'hidden';
                         }
                         else
                         {
@@ -152,14 +155,35 @@ firebase.auth().onAuthStateChanged(function(user) {
                                     var status_hide = document.getElementById('status_hide');
                                     status_hide.style.visibility = 'hidden';
                                     
+                                    document.getElementById('reject').onclick = function(){
+                                        
+                                        firebase.database().ref().child('users').child(id).child('requests').child(req_deep_key).update({
+                                            requestStatus: 'rejected'
+                                        });
+                                        alert('Request Inactivated');
+                                    }
                                 });
-                                
                             });
+                        }
+                    }
+                    else if(status === 'pending')
+                    {
+                        document.getElementById('status').innerHTML = status;
+                        
+                        document.getElementById('reject').onclick = function(){
+                            
+                            firebase.database().ref().child('users').child(id).child('requests').child(req_deep_key).update({
+                                requestStatus: 'rejected'
+                            });
+                            alert('Request Inactivated');
                         }
                     }
                     else
                     {
                         document.getElementById('status').innerHTML = status;
+                        
+                        var status_hide = document.getElementById('reject');
+                        status_hide.style.visibility = 'hidden';
                     }
                 });
             });

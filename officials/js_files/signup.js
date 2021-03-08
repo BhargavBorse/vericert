@@ -26,6 +26,9 @@
 document.getElementById('file').onchange = function(event){
     selectedFile = event.target.files[0];
 }
+document.getElementById('fileid').onchange = function(event){
+    selectedIdFile = event.target.files[0];
+}
 function add_off(){
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
@@ -106,8 +109,13 @@ function add_off(){
     }
     
     var filename = selectedFile.name;
-    var storageRef = firebase.storage().ref('officials'+'/'+filename);
+    var storageRef = firebase.storage().ref('/'+'officials'+'/'+email+'/'+'instituteId'+'/'+filename);
     var uploadTask = storageRef.put(selectedFile);
+    
+    var idfilename = selectedIdFile.name;
+    var storageIdRef = firebase.storage().ref('/'+'officials'+'/'+email+'/'+'Idproof'+'/'+idfilename);
+    var uploadIdTask = storageIdRef.put(selectedIdFile);
+    
     uploadTask.on('state_changed',function(snapshot){
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         alert('Upload Progress : '+progress+'%');
@@ -115,51 +123,55 @@ function add_off(){
         
     },function(){
         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
-            var encrypted = CryptoJS.AES.encrypt(downloadURL,"Secret Passphrase")
-            firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
-                // Signed in 
-                // ...
-                firebase.database().ref().child('officials').push({
-                    imageURL : encrypted.toString(),
-                    name: name,
-                    email: email, 
-                    phone_no: phone_no,
-                    address: address,
-                    gender: gender,
-                    dob: dob,
-                    ins_name: ins_name,
-                    ins_add: ins_add,
-                    designation: designation,
-                    e_id: e_id,
-                    role: officials,
-                    login_status: 'inactive'
+            uploadIdTask.snapshot.ref.getDownloadURL().then(function(downloadIdURL){
+                var encrypted = CryptoJS.AES.encrypt(downloadURL,"Secret Passphrase")
+                var encryptedId = CryptoJS.AES.encrypt(downloadIdURL,"Secret Passphrase")
+
+                firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
+                    // Signed in 
+                    // ...
+                    firebase.database().ref().child('officials').push({
+                        imageURL : encrypted.toString(),
+                        idImageURL : encryptedId.toString(),
+                        name: name,
+                        email: email, 
+                        phone_no: phone_no,
+                        address: address,
+                        gender: gender,
+                        dob: dob,
+                        ins_name: ins_name,
+                        ins_add: ins_add,
+                        designation: designation,
+                        e_id: e_id,
+                        role: officials,
+                        login_status: 'inactive'
+                    });
+                    firebase.database().ref().child('merged').push({
+                        name: name,
+                        email: email, 
+                        phone_no: phone_no,
+                        address: address,
+                        gender: gender,
+                        dob: dob,
+                        ins_name: ins_name,
+                        ins_add: ins_add,
+                        designation: designation,
+                        e_id: e_id,
+                        role: officials,
+                        login_status: 'inactive'
+                    });
+                    console.log(user);
+                    alert('Account has been created, please click login button');
+                    var login_vis = document.getElementById('login_sign');
+                    login_vis.style.visibility = 'visible';
+                    // window.location.href = 'index.html';
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // ..
+                    window.alert("Error : " + errorMessage);
                 });
-                firebase.database().ref().child('merged').push({
-                    imageURL : encrypted.toString(),
-                    name: name,
-                    email: email, 
-                    phone_no: phone_no,
-                    address: address,
-                    gender: gender,
-                    dob: dob,
-                    ins_name: ins_name,
-                    ins_add: ins_add,
-                    designation: designation,
-                    e_id: e_id,
-                    role: officials,
-                    login_status: 'inactive'
-                });
-                console.log(user);
-                alert('Account has been created, please click login button');
-                var login_vis = document.getElementById('login_sign');
-                login_vis.style.visibility = 'visible';
-                // window.location.href = 'index.html';
-            })
-            .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                // ..
-                window.alert("Error : " + errorMessage);
             });
         });
     });

@@ -40,9 +40,48 @@ firebase.auth().onAuthStateChanged(function(user) {
             document.getElementById('e_id').value = snap.e_id;
             document.getElementById('role').value = snap.role;
             
+
+            var aimageCellid = document.createElement('div');
+            document.getElementsByClassName('insImage')[0].appendChild(aimageCellid);
+            var decryptedid = CryptoJS.AES.decrypt(feed_snapshot.child('imageURL').val(), "Secret Passphrase");
+            
+            var updivcreateid = document.createElement('div');
+            var divcreateid = document.createElement('div');
+            divcreateid.className = 'image';
+            updivcreateid.className = 'item';
+            var aimageCellValueid = document.createElement('a');
+            
+            aimageCellValueid.setAttribute('href',decryptedid.toString(CryptoJS.enc.Utf8));
+            
+            aimageCellValueid.setAttribute('data-lightbox','image');
+            
+            aimageCellValueid.setAttribute('target','_blank');
+            
+            var imageCellValueid = document.createElement('img');
+            
+            imageCellValueid.setAttribute('src',decryptedid.toString(CryptoJS.enc.Utf8));
+            
+            // imageCellValue.setAttribute('class','image');
+            
+            // imageCellValue.style.borderRadius = "50%";
+            
+            // imageCellValue.setAttribute('border-radius','50%');
+            
+            imageCellValueid.setAttribute('height','150px');
+            
+            imageCellValueid.setAttribute('width','180px');
+            imageCellValueid.setAttribute('style','padding-bottom: 15px;');
+            // imageCellValue.setAttribute('max-width','50%');
+            updivcreateid.appendChild(divcreateid);
+            divcreateid.appendChild(aimageCellValueid);
+            aimageCellValueid.appendChild(imageCellValueid);
+            
+            aimageCellid.appendChild(aimageCellValueid);
+
+
             var aimageCell = document.createElement('div');
             document.getElementsByClassName('certImage')[0].appendChild(aimageCell);
-            var decrypted = CryptoJS.AES.decrypt(feed_snapshot.child('imageURL').val(), "Secret Passphrase");
+            var decrypted = CryptoJS.AES.decrypt(feed_snapshot.child('idImageURL').val(), "Secret Passphrase");
             
             var updivcreate = document.createElement('div');
             var divcreate = document.createElement('div');
@@ -61,7 +100,6 @@ firebase.auth().onAuthStateChanged(function(user) {
             imageCellValue.setAttribute('src',decrypted.toString(CryptoJS.enc.Utf8));
             
             // imageCellValue.setAttribute('class','image');
-            
             // imageCellValue.style.borderRadius = "50%";
             
             // imageCellValue.setAttribute('border-radius','50%');

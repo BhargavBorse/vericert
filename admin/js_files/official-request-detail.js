@@ -38,9 +38,46 @@ firebase.auth().onAuthStateChanged(function(user) {
             document.getElementById('e_id').value = snap.e_id;
             document.getElementById('role').value = snap.role;
             
+            var aimageCellid = document.createElement('div');
+            document.getElementsByClassName('insImage')[0].appendChild(aimageCellid);
+            var decryptedid = CryptoJS.AES.decrypt(feed_snapshot.child('imageURL').val(), "Secret Passphrase");
+            
+            var updivcreateid = document.createElement('div');
+            var divcreateid = document.createElement('div');
+            divcreateid.className = 'image';
+            updivcreateid.className = 'item';
+            var aimageCellValueid = document.createElement('a');
+            
+            aimageCellValueid.setAttribute('href',decryptedid.toString(CryptoJS.enc.Utf8));
+            
+            aimageCellValueid.setAttribute('data-lightbox','image');
+            
+            aimageCellValueid.setAttribute('target','_blank');
+            
+            var imageCellValueid = document.createElement('img');
+            
+            imageCellValueid.setAttribute('src',decryptedid.toString(CryptoJS.enc.Utf8));
+            
+            // imageCellValue.setAttribute('class','image');
+            
+            // imageCellValue.style.borderRadius = "50%";
+            
+            // imageCellValue.setAttribute('border-radius','50%');
+            
+            imageCellValueid.setAttribute('height','250px');
+            
+            imageCellValueid.setAttribute('width','350px');
+            imageCellValueid.setAttribute('style','padding-bottom: 15px;');
+            // imageCellValue.setAttribute('max-width','50%');
+            updivcreateid.appendChild(divcreateid);
+            divcreateid.appendChild(aimageCellValueid);
+            aimageCellValueid.appendChild(imageCellValueid);
+            
+            aimageCellid.appendChild(aimageCellValueid);
+            
             var aimageCell = document.createElement('div');
             document.getElementsByClassName('certImage')[0].appendChild(aimageCell);
-            var decrypted = CryptoJS.AES.decrypt(feed_snapshot.child('imageURL').val(), "Secret Passphrase");
+            var decrypted = CryptoJS.AES.decrypt(feed_snapshot.child('idImageURL').val(), "Secret Passphrase");
             
             var updivcreate = document.createElement('div');
             var divcreate = document.createElement('div');
@@ -64,9 +101,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             // imageCellValue.setAttribute('border-radius','50%');
             
-            imageCellValue.setAttribute('height','150px');
+            imageCellValue.setAttribute('height','250px');
             
-            imageCellValue.setAttribute('width','180px');
+            imageCellValue.setAttribute('width','350px');
             imageCellValue.setAttribute('style','padding-bottom: 15px;');
             // imageCellValue.setAttribute('max-width','50%');
             updivcreate.appendChild(divcreate);
@@ -74,16 +111,17 @@ firebase.auth().onAuthStateChanged(function(user) {
             aimageCellValue.appendChild(imageCellValue);
             
             aimageCell.appendChild(aimageCellValue);
-
+            
+            
             var delFound = document.getElementById('deleteRequest');
-
+            
             var alink_more_details = document.createElement("a");
             var alink_more_details_text = document.createTextNode('Delete user');
             alink_more_details.appendChild(alink_more_details_text);
             alink_more_details.setAttribute('class',"btn btn-danger")
             // alink_more_details.setAttribute('class',"fa fa-info")
             alink_more_details.href = "blank_officials.html?id="+id;
-
+            
             delFound.appendChild(alink_more_details);
         });
     } else {

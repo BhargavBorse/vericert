@@ -63,7 +63,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                         alink_more_details.appendChild(alink_more_details_text);
                         alink_more_details.setAttribute('class',"btn btn-danger")
                         // alink_more_details.setAttribute('class',"fa fa-info")
-                        alink_more_details.href = "issue-candidateDet.html?userId="+user_id+"&requesterId="+requesterId;
+                        alink_more_details.href = "issue-candidateDet.html?userId="+user_id+"&requesterId="+requesterId+"&reqId="+feed_deep_key;
                         
                         
                         requestTo_cell.appendChild(requestTo_value_cell);

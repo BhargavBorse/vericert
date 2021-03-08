@@ -26,6 +26,9 @@
 document.getElementById('file').onchange = function(event){
     selectedFile = event.target.files[0];
 }
+document.getElementById('fileid').onchange = function(event){
+    selectedIdFile = event.target.files[0];
+}
 function add_off(){
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
@@ -105,8 +108,13 @@ function add_off(){
     }
     
     var filename = selectedFile.name;
-    var storageRef = firebase.storage().ref('recruiter'+'/'+filename);
+    var storageRef = firebase.storage().ref('/'+'recruiter'+'/'+email+'/'+'instituteId'+'/'+filename);
     var uploadTask = storageRef.put(selectedFile);
+
+    var idfilename = selectedIdFile.name;
+    var storageIdRef = firebase.storage().ref('/'+'recruiter'+'/'+email+'/'+'Idproof'+'/'+idfilename);
+    var uploadIdTask = storageIdRef.put(selectedIdFile);
+
     uploadTask.on('state_changed',function(snapshot){
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         alert('Upload Progress : '+progress+'%');
@@ -114,14 +122,16 @@ function add_off(){
         
     },function(){
         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
+            uploadIdTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
             var encrypted = CryptoJS.AES.encrypt(downloadURL,"Secret Passphrase")
-            
+            var encryptedId = CryptoJS.AES.encrypt(downloadURL,"Secret Passphrase")            
             
             firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
                 // Signed in 
                 // ...
                 firebase.database().ref().child('recruiter').push({
                     imageURL : encrypted.toString(),
+                    idImageURL : encryptedId.toString(),
                     name: name,
                     email: email, 
                     phone_no: phone_no,
@@ -162,6 +172,7 @@ function add_off(){
                 // ..
                 window.alert("Error : " + errorMessage);
             });
+        });
         });
     });
 }
