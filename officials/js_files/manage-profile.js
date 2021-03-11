@@ -138,7 +138,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     var e_id = document.getElementById('e_id').value;
                     var role = document.getElementById('role').value;
                     
-                    if(name == "")
+                    if(name == "" )
                     {
                         alert('Name must be filled out.');
                         return false;
